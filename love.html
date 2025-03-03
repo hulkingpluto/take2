@@ -57,10 +57,10 @@
     <!-- Floating hearts will be added by JavaScript -->
 
     <!-- Hidden audio element -->
-    <audio id="apologySong" src="sorry.mp3" autoplay loop></audio>
+    <audio id="apologySong" src="sorry.mp3" loop></audio>
 
     <script>
-        // Play the song if the user has clicked "Yes"
+        // Check if the user has already clicked "Yes"
         if (localStorage.getItem('userClickedYes') === 'true') {
             let song = document.getElementById("apologySong");
             if (song.paused) {
@@ -91,6 +91,14 @@
 
         // Call the function to create floating hearts every 1.5 seconds
         setInterval(createFloatingHearts, 1500);
+
+        // Handle audio play on user interaction (click or touchstart)
+        document.body.addEventListener("click", function() {
+            let song = document.getElementById("apologySong");
+            if (song.paused) {
+                song.play(); // Play the song if it's not playing
+            }
+        });
     </script>
 
 </body>
