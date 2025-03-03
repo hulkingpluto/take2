@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neon Love</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #000;
+            margin: 0;
+            overflow: hidden; /* Prevents scrolling */
+        }
+
+        .neon-heart {
+            font-size: 100px;
+            font-weight: bold;
+            color: #ff4d6d;
+            text-align: center;
+            animation: neon 1.5s ease-in-out infinite alternate;
+        }
+
+        @keyframes neon {
+            0% { color: #ff4d6d; text-shadow: 0 0 10px #ff4d6d, 0 0 20px #ff4d6d, 0 0 30px #ff4d6d, 0 0 40px #ff4d6d; }
+            50% { color: #ff66b2; text-shadow: 0 0 10px #ff66b2, 0 0 20px #ff66b2, 0 0 30px #ff66b2, 0 0 40px #ff66b2; }
+            100% { color: #ff4d6d; text-shadow: 0 0 10px #ff4d6d, 0 0 20px #ff4d6d, 0 0 30px #ff4d6d, 0 0 40px #ff4d6d; }
+        }
+
+        /* Floating hearts style */
+        .floating-heart {
+            position: absolute;
+            font-size: 30px;
+            animation: float 5s linear infinite;
+            z-index: 1000;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-200px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Neon Heart -->
+    <div class="neon-heart">💖 LOVE 💖</div>
+
+    <!-- Floating hearts will be added by JavaScript -->
+
+    <!-- Hidden audio element -->
+    <audio id="apologySong" src="sorry.mp3" autoplay loop></audio>
+
+    <script>
+        // Play the song if the user has clicked "Yes"
+        if (localStorage.getItem('userClickedYes') === 'true') {
+            let song = document.getElementById("apologySong");
+            if (song.paused) {
+                song.play(); // Play the song if it's not already playing
+            }
+        }
+
+        // Function to create floating hearts
+        function createFloatingHearts() {
+            for (let i = 0; i < 15; i++) {
+                let heart = document.createElement("div");
+                heart.classList.add("floating-heart");
+                heart.innerHTML = "❤️";
+
+                // Random position for each heart
+                heart.style.left = Math.random() * 100 + "vw";
+                heart.style.animationDuration = (Math.random() * 5 + 3) + "s"; // Random speed
+
+                // Append the heart to the body
+                document.body.appendChild(heart);
+
+                // Remove the heart after its animation ends
+                setTimeout(() => {
+                    heart.remove();
+                }, 5000); // The animation duration
+            }
+        }
+
+        // Call the function to create floating hearts every 1.5 seconds
+        setInterval(createFloatingHearts, 1500);
+    </script>
+
+</body>
+</html>

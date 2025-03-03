@@ -14,11 +14,22 @@
     <button onclick="showMessage()">Click for a Special Message</button>
     <p id="message">You are the best thing that ever happened to me! Please forgive me my love? 🥺💕</p>
 
-     <!-- Hidden audio element -->
-     <audio id="apologySong" src="sorry.mp3"></audio>
+    <div id="loveQuestion" style="display:none;">
+        <p>Do you still love me?</p>
+        <button onclick="showNeonHeart()">Yes</button>
+        <button onclick="noMove()">No</button>
+    </div>
 
-     <!-- Optional mute/unmute button -->
-     <button id="muteButton" onclick="toggleAudio()">🔊 Play</button>
+    <!-- Sad face popup -->
+    <div id="sadFace" style="display:none; font-size: 50px; color: #ff4d6d; text-align: center; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+        😢
+    </div>
+
+    <!-- Hidden audio element -->
+    <audio id="apologySong" src="sorry.mp3" autoplay loop></audio>
+
+    <!-- Optional mute/unmute button -->
+    <button id="muteButton" onclick="toggleAudio()">🔊 Play</button>
 
     <script src="sorry.js"></script>
 </body>

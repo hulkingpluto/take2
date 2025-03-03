@@ -11,6 +11,18 @@ body {
     transition: background-color 1.5s ease;
 }
 
+#sadFace {
+    display: none;
+    font-size: 1000px;  /* Increase the font size to make the face bigger */
+    color: #ff4d6d;
+    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
 h1 {
     color: #d63384;
 }
